@@ -11,5 +11,5 @@ class _Login2ScreenState extends State<Login2Screen> {
   @override
   Widget build(BuildContext context) {
     return Container();
-  }
+  }  
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:generar_numero/screens/menu_sceen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,7 +9,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final TextEditingController usuarioController = TextEditingController();
   final TextEditingController contrasenaController = TextEditingController();
   String nombreUsuario = "";
@@ -52,7 +52,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 actions: [
                   TextButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        final route = MaterialPageRoute(
+                            builder: (context) => const MenuScreen());
+                        Navigator.push(context, route);
                       },
                       child: const Text('Aceptar'))
                 ],
@@ -65,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
             builder: (BuildContext context) {
               return AlertDialog(
                 title: const Text('Error'),
-                content: const Text('La contraseña es incorrecta'),
+                content: const Text('El usuaio y/o contraseña es incorrecta'),
                 actions: [
                   TextButton(
                       onPressed: () {
@@ -107,7 +109,14 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 80),
           child: Column(
+            //Ponemos la imagen de la aplicacion
+
             children: [
+              const Image(
+                image: AssetImage('../assets/images/logo.png'),
+                width: 200,
+                height: 200,
+              ),
               TextFormField(
                 controller: usuarioController,
                 decoration: const InputDecoration(
@@ -158,9 +167,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   registrarse();
                 },
                 child: const Text('Registrarse'),
-              ),
+              )
             ],
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Inicio',
+            ), 
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Buscar',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Perfil',
+            ),
+          ],
         ));
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:generar_numero/screens/menu_sceen.dart';
+import 'package:generar_numero/screens/login_screen.dart';
 
 void main() {
-runApp(const MainApp());
+  runApp(const MainApp());
 }
 
 class MainApp extends StatefulWidget {
@@ -16,8 +16,6 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-       debugShowCheckedModeBanner: false,
-      home: MenuScreen()
-    );
+        debugShowCheckedModeBanner: false, home: LoginScreen());
   }
 }
