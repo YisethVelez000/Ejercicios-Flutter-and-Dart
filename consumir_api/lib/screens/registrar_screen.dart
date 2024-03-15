@@ -14,12 +14,8 @@ void registrarUsuario(usuario) async {
   var url =
       Uri.parse('https://apiusuarios-s9ff.onrender.com/api/user/register');
   var response = await http.post(url, body: usuario);
-  print('Response status: ${response.statusCode}');
-  print('Response body: ${response.body}');
   if (response.statusCode == 200) {
-    print('Usuario registrado');
   } else {
-    print('Error al registrar el usuario');
   }
 }
 
