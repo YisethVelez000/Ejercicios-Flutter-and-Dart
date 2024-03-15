@@ -45,7 +45,8 @@ class _RegistrarExportacionScreenState
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonResponse = response.body;
-
+      //Decodificamos el json para que nos traiga unicamente el valor del dolar con index 0
+      jsonResponse = jsonDecode(jsonResponse)[0]['valor'];
       //Eliminamos el formato Json del dolar
 
       return jsonEncode(
@@ -126,9 +127,11 @@ class _RegistrarExportacionScreenState
               height: 20,
             ),
             FutureBuilder(
-              future: obtenerUltimoValor(),
+              future: obtenerDolar(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  //Decodificamos el json
+
                   var precio =
                       snapshot.data; // Ya no se llama a obtenerClaveValor
                   return TextFormField(
