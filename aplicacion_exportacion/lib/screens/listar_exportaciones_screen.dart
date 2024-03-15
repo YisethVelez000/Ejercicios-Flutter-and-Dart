@@ -115,13 +115,8 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
 
     var response = await http.put(url, body: exportacionEditada);
     if (response.statusCode != 200) {
-      print(id);
-      print(exportacionEditada);
-      print('error nya ${response.statusCode}');
       throw Exception('Failde to put exportacion');
-    } else {
-      print('exitos mi tilin');
-    }
+    } else {}
   }
 
   @override
@@ -197,6 +192,7 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                                             ),
                                             TextField(
                                               controller: precioKiloController,
+                                              
                                               decoration: InputDecoration(
                                                   border:
                                                       const OutlineInputBorder(),
@@ -224,7 +220,6 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                                                 };
                                                 editarExportacion(
                                                     id, exportacionEditada);
-                                                setState(() {});
                                                 // ignore: use_build_context_synchronously
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(const SnackBar(
@@ -265,7 +260,7 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                                                 producto: '',
                                                 kilos: 0,
                                                 precioKilo: 0,
-                                                precioActualDolar: 1)
+                                                precioActualDolar: 0)
                                             .eliminarExportacion(id);
                                         //Mostrar mensaje de éxito
                                         // ignore: use_build_context_synchronously

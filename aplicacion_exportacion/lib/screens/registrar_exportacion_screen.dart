@@ -25,8 +25,9 @@ TextEditingController precioActualDolarController = TextEditingController();
 class _RegistrarExportacionScreenState
     extends State<RegistrarExportacionScreen> {
   void registrarExportacion(exportacion) async {
-    var url = 'https://apiexportaciones.onrender.com/api/exportacion';
-    var response = await http.post(url as Uri, body: exportacion);
+    var url =
+        Uri.parse('https://apiexportaciones.onrender.com/api/exportacion');
+    var response = await http.post(url, body: exportacion);
     if (response.statusCode == 200) {
       // Mostramos una alerta de exportacion registrada con exito
       // Redirigimos a la pantalla de listar exportaciones para que se muestre la exportacion registrada con exito
@@ -38,27 +39,14 @@ class _RegistrarExportacionScreenState
     }
   }
 
-  void eliminarExportacion(id) async {
-    var url =
-        ('https://apiexportaciones.onrender.com/api/exportacion/$id' as Uri);
-    var response = await http.delete(url);
-    if (response.statusCode == 200) {
-      // Mostramos un dialogo de exportacion eliminada con exito
-    } else {
-      // Mostramos un dialogo de error al eliminar la exportacion
-    }
-  }
-
   //Creamos un metodo que nos traiga el valor del dolar actua solo el campo valor con index 0 y que se muestre en el campo de texto precioActualDolarController
   Future<String> obtenerDolar() async {
-    var url = 'https://www.datos.gov.co/resource/mcec-87by.json';
-    var response = await http.get(url as Uri);
+    var url = Uri.parse('https://www.datos.gov.co/resource/mcec-87by.json');
+    var response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonResponse = response.body;
 
-      var dolar = jsonResponse.split(',')[0];
       //Eliminamos el formato Json del dolar
-      dolar = jsonEncode(jsonResponse);
 
       return jsonEncode(
           jsonResponse); // Se retorna el valor del dolar como String
@@ -119,7 +107,6 @@ class _RegistrarExportacionScreenState
             ),
             TextField(
               controller: kilosController,
-              keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Peso del producto en kg',
@@ -130,7 +117,6 @@ class _RegistrarExportacionScreenState
             ),
             TextField(
               controller: precioKiloController,
-              keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Precio del kilo del producto en dolar',
@@ -174,6 +160,7 @@ class _RegistrarExportacionScreenState
                 final route = MaterialPageRoute(
                     builder: (context) => const ListarExportacionesScreen());
                 // Creamos un set state para que se muestre la exportacion registrada
+                setState(() {});
                 Navigator.push(context, route);
                 setState(() {});
               },
