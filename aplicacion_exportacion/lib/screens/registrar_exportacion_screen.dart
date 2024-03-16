@@ -165,7 +165,6 @@ class _RegistrarExportacionScreenState
                 // Creamos un set state para que se muestre la exportacion registrada
                 setState(() {});
                 Navigator.push(context, route);
-                setState(() {});
               },
               child: const Text('Registrar exportacion'),
             ),

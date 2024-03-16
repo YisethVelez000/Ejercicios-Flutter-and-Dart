@@ -162,10 +162,6 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                               final producto = exportacion.producto;
                               final kilos = exportacion.kilos;
                               final precioKilo = exportacion.precioKilo;
-                              productoController.text = producto;
-                              kilosController.text = kilos.toString();
-                              precioKiloController.text = precioKilo.toString();
-
                               //Mostrar dialogo
                               showDialog(
                                   context: context,
@@ -196,6 +192,7 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                                             ),
                                             TextField(
                                               controller: precioKiloController,
+                                              
                                               decoration: InputDecoration(
                                                   border:
                                                       const OutlineInputBorder(),
