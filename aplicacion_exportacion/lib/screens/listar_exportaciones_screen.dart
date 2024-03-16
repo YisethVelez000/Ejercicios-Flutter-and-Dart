@@ -149,7 +149,6 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                       title: Text('Producto: ${exportacion.producto}'),
                       subtitle: Text('Kilos: ${exportacion.kilos}\n'
                           'Precio por Kilo: ${exportacion.precioKilo}\n'
-                          'Precio Total: ${(exportacion.kilos * exportacion.precioKilo)}\n'
                           'Precio Actual del Dolar: ${exportacion.precioActualDolar}\n'),
                       //Agregar el boton de eliminar y editar
                       trailing: Row(
@@ -192,7 +191,6 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
                                             ),
                                             TextField(
                                               controller: precioKiloController,
-                                              
                                               decoration: InputDecoration(
                                                   border:
                                                       const OutlineInputBorder(),
