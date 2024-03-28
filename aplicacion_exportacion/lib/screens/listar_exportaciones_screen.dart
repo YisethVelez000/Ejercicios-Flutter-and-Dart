@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:aplicacion_exportacion/screens/registrar_exportacion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -121,7 +122,9 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Scaffold(
+      
         appBar: AppBar(
           title: const Text('Listar Exportaciones'),
         ),
@@ -131,7 +134,7 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
               .fetchExportaciones(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('${snapshot.error} nya');
+              return Text('${snapshot.error}');
             }
 
             if (!snapshot.hasData) {
@@ -141,10 +144,12 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
             final exportaciones = snapshot.data!;
 
             return ListView.builder(
+              
               itemCount: exportaciones.length,
               itemBuilder: (context, index) {
                 final exportacion = exportaciones[index];
                 return Card(
+                  
                   child: ListTile(
                       title: Text('Producto: ${exportacion.producto}'),
                       subtitle: Text('Kilos: ${exportacion.kilos}\n'
@@ -284,6 +289,27 @@ class _ListarExportacionesScreenState extends State<ListarExportacionesScreen> {
               },
             );
           },
-        ));
+        ),
+        //Agregamo una opción para agregar exportaciones desde la lista de exportaciones
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            final route = MaterialPageRoute(
+                builder: (context) => const RegistrarExportacionScreen());
+            Navigator.push(context, route);
+            setState(() {});
+          },
+          child: const Icon(Icons.add),
+        ),
+        //Agregamos un nav bottom con mi nombre y número de ficha
+        bottomNavigationBar: BottomAppBar(
+          child: Container(
+            height: 50,
+            alignment: Alignment.center,
+            child: const Text('Alison Puerta ADSO 2670689')
+          ),
+        )
+      
+        );
   }
 }
+ 

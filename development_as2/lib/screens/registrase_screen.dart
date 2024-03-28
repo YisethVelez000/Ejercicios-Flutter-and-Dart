@@ -1,20 +1,18 @@
-import 'package:development_as2/screens/olvidar_contrasena_screen.dart';
-import 'package:development_as2/screens/registrase_screen.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrarseScreen extends StatefulWidget {
+  const RegistrarseScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrarseScreen> createState() => _RegistrarseScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrarseScreenState extends State<RegistrarseScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body:  SizedBox(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Stack(
@@ -105,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.all(15.0),
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     width: double.infinity,
-                    height: 450,
+                    height: 550,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
@@ -122,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Text('Iniciar Sesion',
+                        Text('Registarse',
                             style: Theme.of(context).textTheme.headlineMedium),
                         const SizedBox(
                           height: 30,
@@ -131,6 +129,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Form(
                               child: Column(
                             children: [
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Nombre Completo',
+                                  prefixIcon: Icon(
+                                    Icons.person_outline_rounded,
+                                    color: Colors.blueAccent,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
                               TextFormField(
                                 decoration: const InputDecoration(
                                   labelText: 'Correo Electronico',
@@ -153,6 +163,16 @@ class _LoginScreenState extends State<LoginScreen> {
                               const SizedBox(
                                 height: 30,
                               ),
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Confirmar Contraseña',
+                                  prefixIcon: Icon(Icons.lock_outline,
+                                      color: Colors.blueAccent),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
                               MaterialButton(
                                 onPressed: () {},
                                 color: Colors.blueAccent,
@@ -164,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: const SizedBox(
                                     width: 120,
                                     height: 40,
-                                    child: Center(child: Text('Ingresar'))),
+                                    child: Center(child: Text('Registrarse'))),
                               ),
                             ],
                           )),
@@ -173,32 +193,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 50),
-                  MaterialButton(
-                    onPressed: () {
-                      //Redirigimos al registro
-                      final route = MaterialPageRoute(
-                          builder: (context) => const RegistrarseScreen());
-                      Navigator.push(context, route);
-                    },
-                    color: null,
-                    textColor: Colors.black,
-                    disabledColor: Colors.grey,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Text('Crear una cuenta',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18)),
-                  ),
-                  MaterialButton(
-                      onPressed: () {
-                                              final route = MaterialPageRoute(
-                          builder: (context) => const OlvideContrasenaScreen());
-                      Navigator.push(context, route);
-                      },
-                      color: null,
-                      textColor: const Color.fromARGB(255, 127, 197, 255),
-                      child: const Text('¿Olvidaste tu contraseña?'))
+                  const Text(
+                    'Crear una cuenta',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  )
                 ],
               ),
             ),
